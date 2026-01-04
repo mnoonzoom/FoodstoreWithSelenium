@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - QuickBite</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="profile-container">
+        <header class="profile-header">
+            <div class="logo">
+                <h1>QuickBite</h1>
+            </div>
+            <nav>
+                <a href="index.html" class="btn btn-primary">Home</a>
+                <button id="logoutButton" class="btn btn-primary">Logout</button>
+            </nav>
+        </header>
+        <div id="adminPanel" style="display: none;" class="admin-panel">
+            <h2>Admin Panel</h2>
+            <div class="admin-actions">
+                <button class="btn btn-secondary" onclick="loadOrders()">Manage Orders</button>
+                <button class="btn btn-secondary" onclick="loadMenu()">Manage Menu</button>
+                <button class="btn btn-secondary" onclick="showAddMenuForm()">Add Menu Item</button>
+            </div>
+            <div id="adminContent" class="admin-content"></div>
+        </div>
+        <div id="addMenuForm" class="form-container" style="display: none;">
+            <h3>Add Menu Item</h3>
+            <form id="menuForm">
+                <input type="text" id="menuItemName" placeholder="Name" required />
+                <input type="number" id="menuItemPrice" placeholder="Price" required step="0.01" />
+                <input type="text" id="menuItemCategory" placeholder="Category" required />
+                <input type="url" id="menuItemPicture" placeholder="Picture URL" required />
+                <label>
+                    <input type="checkbox" id="menuItemAvailable" /> Available
+                </label>
+                <button type="submit" class="btn btn-primary">Add Item</button>
+                <button type="button" class="btn btn-secondary" onclick="hideAddMenuForm()">Cancel</button>
+            </form>
+
+        </div>
+        <div id="editMenuModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <button class="modal-close" onclick="hideEditMenuForm()">&times;</button>
+                <h3>Edit Menu Item</h3>
+                <form id="editMenuForm">
+                    <input type="text" id="editMenuItemName" placeholder="Name" required />
+                    <input type="number" id="editMenuItemPrice" placeholder="Price" required step="0.01" />
+                    <input type="text" id="editMenuItemCategory" placeholder="Category" required />
+                    <input type="url" id="editMenuItemPicture" placeholder="Picture URL" required />
+                    <label>
+                        <input type="checkbox" id="editMenuItemAvailable" /> Available
+                    </label>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideEditMenuForm()">Cancel</button>
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <main class="profile-content">
+            <div id="userProfile" class="profile-section">
+                <h2>User Profile</h2>
+                <div class="profile-info">
+                    <p id="profileName">Name: </p>
+                    <p id="profileEmail">Email: </p>
+                    <p id="profilePhone">Phone: </p>
+                </div>
+                <div class="order-history">
+                    <h3>Order History</h3>
+                    <div id="orderHistoryContainer" class="order-history-container">
+                     
+                    </div>
+                    <div class="pagination-controls">
+                        <button id="prevPageButton" class="btn btn-primary">Previous</button>
+                        <span id="currentPageLabel">Page 1</span>
+                        <button id="nextPageButton" class="btn btn-primary">Next</button>
+                    </div>
+                </div>
+
+
+</main>
+    </div>
+    </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="profile.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

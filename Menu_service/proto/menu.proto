@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package menu;
+
+option go_package = "menu/proto;proto";
+
+message MenuItem {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+  bool available = 5;
+  string category = 6;
+  string image_url = 7;
+}
+
+message CreateMenuItemRequest {
+  string name = 1;
+  string description = 2;
+  double price = 3;
+  bool available = 4;
+  string category = 5;
+  string image_url = 6;
+}
+
+message CreateMenuItemResponse {
+  string id = 1;
+}
+
+message GetMenuItemByIDRequest {
+  string id = 1;
+}
+
+message GetMenuItemByIDResponse {
+  MenuItem item = 1;
+}
+
+message UpdateMenuItemRequest {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+  bool available = 5;
+  string category = 6;
+  string image_url = 7;
+}
+
+message UpdateMenuItemResponse {
+  string message = 1;
+}
+
+message DeleteMenuItemRequest {
+  string id = 1;
+}
+
+message DeleteMenuItemResponse {
+  string message = 1;
+}
+
+message ListMenuItemsRequest {
+  int64 limit = 1;
+  int64 skip = 2;
+  string search = 3;
+  string category = 4;
+  string sort_by = 5;
+  bool sort_asc = 6;
+}
+
+message ListMenuItemsResponse {
+  repeated MenuItem items = 1;
+  int64 total_count = 2;
+}
+
+
+message GetMultipleMenuItemsRequest {
+  repeated string ids = 1;
+}
+
+message GetMultipleMenuItemsResponse {
+  repeated MenuItem items = 1;
+}
+
+service MenuService {
+  rpc CreateMenuItem(CreateMenuItemRequest) returns (CreateMenuItemResponse);
+  rpc GetMenuItemByID(GetMenuItemByIDRequest) returns (GetMenuItemByIDResponse);
+  rpc UpdateMenuItem(UpdateMenuItemRequest) returns (UpdateMenuItemResponse);
+  rpc DeleteMenuItem(DeleteMenuItemRequest) returns (DeleteMenuItemResponse);
+  rpc ListMenuItems(ListMenuItemsRequest) returns (ListMenuItemsResponse);
+  rpc GetMultipleMenuItems(GetMultipleMenuItemsRequest) returns (GetMultipleMenuItemsResponse);
+}
