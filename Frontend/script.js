@@ -27,15 +27,14 @@ let currentSortBy = "price";
 let currentSortAsc = true;
 
 
-// 🍽 Загрузка меню
 async function loadMenu() {
-
   const skip = (currentPage - 1) * pageSize;
+
   const recommendedBody = {
     limit: pageSize,
     skip,
     search: currentSearch,
-    category: "",
+    category: currentCategory, 
     sort_by: currentSortBy,
     sort_asc: currentSortAsc,
   };
@@ -93,9 +92,11 @@ document.getElementById("filterByNameInput").addEventListener("input", e => {
 
 document.getElementById("categorySelect").addEventListener("change", e => {
   currentCategory = e.target.value;
+  console.log("Selected category:", currentCategory); 
   currentPage = 1;
   loadMenu();
 });
+
 
 document.querySelectorAll(".sort-button").forEach(btn => {
   btn.addEventListener("click", () => {
