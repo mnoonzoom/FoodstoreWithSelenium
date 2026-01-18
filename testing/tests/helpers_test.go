@@ -5,8 +5,9 @@ import (
 	"math/rand"
 	"testing"
 	"time"
-
+	"os"
 	"github.com/tebeka/selenium"
+	"strings"
 )
 
 const (
@@ -45,9 +46,26 @@ func startChrome(t *testing.T) (selenium.WebDriver, func()) {
 	_ = driver.SetImplicitWaitTimeout(10 * time.Second)
 
 	cleanup := func() {
-		_ = driver.Quit()
-		_ = service.Stop()
+	if t.Failed() {
+		if img, err := driver.Screenshot(); err == nil {
+			path := fmt.Sprintf("target/screenshots/%s_%s.png", t.Name(), ts())
+			_ = os.WriteFile(path, img, 0644)
+			if suiteLogger != nil {
+				suiteLogger.Printf("SCREENSHOT SAVED: %s", path)
+			}
+			t.Logf("Screenshot saved: %s", path)
+		} else {
+			if suiteLogger != nil {
+				suiteLogger.Printf("SCREENSHOT FAILED: %v", err)
+			}
+			t.Logf("Screenshot failed: %v", err)
+		}
 	}
+
+	_ = driver.Quit()
+	_ = service.Stop()
+}
+
 
 	return driver, cleanup
 }
@@ -167,16 +185,17 @@ func loginAndOpenMenu(t *testing.T, wd selenium.WebDriver) {
 		t.Fatalf("QuickBite: could not find Register button to click")
 	}
 
-	func() {
-		deadline := time.Now().Add(6 * time.Second)
-		for time.Now().Before(deadline) {
-			if _, err := wd.AlertText(); err == nil {
-				_ = wd.AcceptAlert()
-				return
-			}
-			time.Sleep(200 * time.Millisecond)
-		}
-	}()
+waitUntil(t, 10*time.Second, func() (bool, error) {
+	_, err := wd.AlertText()
+	return err == nil, nil
+})
+
+regAlert, _ := wd.AlertText()
+_ = wd.AcceptAlert()
+
+if !strings.Contains(strings.ToLower(regAlert), "success") {
+	t.Fatalf("QuickBite: registration failed. ACTUAL alert=%q", regAlert)
+}
 
 	loginTab, err := wd.FindElement(selenium.ByCSSSelector, "[data-tab='login']")
 	if err != nil {
@@ -212,6 +231,33 @@ func loginAndOpenMenu(t *testing.T, wd selenium.WebDriver) {
 	if !clicked {
 		t.Fatalf("QuickBite: could not find Login button to click")
 	}
+
+deadline := time.Now().Add(10 * time.Second)
+loggedIn := false
+
+for time.Now().Before(deadline) {
+ 
+    if v, err := wd.ExecuteScript("return localStorage.getItem('token');", nil); err == nil {
+        if s, ok := v.(string); ok && s != "" {
+            loggedIn = true
+            break
+        }
+    }
+
+    if _, err := wd.FindElement(selenium.ByID, "logoutButton"); err == nil {
+        loggedIn = true
+        break
+    }
+
+    time.Sleep(250 * time.Millisecond)
+}
+
+if !loggedIn {
+ 
+    u, _ := wd.CurrentURL()
+    tt, _ := wd.Title()
+    t.Fatalf("QuickBite: login did not complete within 10s. url=%q title=%q", u, tt)
+}
 
 	func() {
 		deadline := time.Now().Add(4 * time.Second)

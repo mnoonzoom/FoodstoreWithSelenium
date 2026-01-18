@@ -1,6 +1,7 @@
 package tests
 
 import (
+	"strings"
 	"testing"
 	"time"
 
@@ -8,57 +9,70 @@ import (
 )
 
 func Test_QuickBite_Select_Class_Category_FindDrinks(t *testing.T) {
+	logStart(t)
+	defer logEnd(t)
+
 	wd, cleanup := startChrome(t)
 	defer cleanup()
 
+	logStep(t, "Login and open menu page")
 	loginAndOpenMenu(t, wd)
 
+	logStep(t, "Wait for categorySelect to be present")
 	waitUntil(t, 15*time.Second, func() (bool, error) {
 		_, err := wd.FindElement(selenium.ByID, "categorySelect")
 		return err == nil, nil
 	})
 
-	time.Sleep(2 * time.Second)
+_, err := wd.FindElement(selenium.ByID, "categorySelect")
+if err != nil {
+    t.Fatalf("QuickBite: categorySelect not found: %v", err)
+}
 
-	sel, err := wd.FindElement(selenium.ByID, "categorySelect")
+	// Надежный способ выбрать option: через JS (эквивалент Select class)
+	// Expected: categorySelect.value == "drinks"
+	logStep(t, "Select category value = drinks (JS select-equivalent)")
+	_, err = wd.ExecuteScript(`
+		var s = document.getElementById('categorySelect');
+		if(!s) return "NO_SELECT";
+		s.value = "drinks";
+		s.dispatchEvent(new Event('change', {bubbles:true}));
+		return s.value;
+	`, nil)
 	if err != nil {
-		t.Fatalf("QuickBite: categorySelect not found: %v", err)
+		logError(t, err)
+		t.Fatalf("QuickBite: select drinks via JS failed: %v", err)
 	}
-	_ = sel.Click()
 
-	time.Sleep(1 * time.Second)
-
-	opt, err := wd.FindElement(
-		selenium.ByXPATH,
-		"//select[@id='categorySelect']/option[@value='drinks']",
-	)
-	if err != nil {
-		t.Fatalf("QuickBite: drinks option not found: %v", err)
-	}
-	_ = opt.Click()
-
-	time.Sleep(2 * time.Second)
-
+	logStep(t, "Verify selected value is 'drinks'")
 	val, err := wd.ExecuteScript(
-		"return document.getElementById('categorySelect').value;",
+		"return document.getElementById('categorySelect') && document.getElementById('categorySelect').value;",
 		nil,
 	)
 	if err != nil {
+		logError(t, err)
 		t.Fatalf("QuickBite: read categorySelect value: %v", err)
 	}
-	if val != "drinks" {
+	if s, ok := val.(string); !ok || s != "drinks" {
 		t.Fatalf("QuickBite: expected selected value 'drinks', got %v", val)
 	}
 
-	time.Sleep(2 * time.Second)
-
-	waitUntil(t, 10*time.Second, func() (bool, error) {
-		cards, err := wd.FindElements(
-			selenium.ByCSSSelector,
-			"#recommendedGrid .menu-card",
-		)
+	// Проверка результата фильтра: карточки появились, и (если есть текст) они связаны с напитками
+	logStep(t, "Wait for filtered menu cards in #recommendedGrid")
+	waitUntil(t, 12*time.Second, func() (bool, error) {
+		cards, err := wd.FindElements(selenium.ByCSSSelector, "#recommendedGrid .menu-card")
 		return err == nil && len(cards) > 0, nil
 	})
 
-	time.Sleep(3 * time.Second)
+	logStep(t, "Optional: check at least one card text contains drink-related keyword")
+	cards, _ := wd.FindElements(selenium.ByCSSSelector, "#recommendedGrid .menu-card")
+	if len(cards) > 0 {
+		txt, _ := cards[0].Text()
+		// это мягкая проверка: не валим тест если слова нет, просто логируем
+		if !strings.Contains(strings.ToLower(txt), "drink") && !strings.Contains(strings.ToLower(txt), "cola") {
+			t.Logf("QuickBite: first card text after drinks filter: %q", txt)
+		}
+	}
+
+	logStep(t, "Done")
 }

@@ -1,0 +1,139 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Foodstore Go Test Report (Test Cases)</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 16px; }
+    .sum { margin: 12px 0 18px; padding: 10px; background:#f7f7f7; border:1px solid #ddd; }
+    .PASS { color: green; font-weight: bold; }
+    .FAIL { color: red; font-weight: bold; }
+    .SKIP { color: orange; font-weight: bold; }
+    .card { border:1px solid #ddd; border-radius: 8px; padding: 12px; margin: 12px 0; }
+    .muted { color:#666; }
+    .kv { margin: 6px 0; }
+    .kv b { display:inline-block; width: 160px; }
+    ol, ul { margin: 6px 0 6px 22px; }
+    .out { margin-top:10px; padding:10px; background:#fafafa; border:1px dashed #ccc; }
+    .out h4 { margin:0 0 6px; }
+    .small { font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h2>Foodstore Automation Report (Go testing + Selenium)</h2>
+
+  <div class="sum">
+    <b>Execution summary:</b>
+    Pass: 3 | Fail: 0 | Skip: 0 <br/>
+    <span class="muted small">
+      Logs: tests/target/logs/test-run.log • Screenshots: tests/target/screenshots/
+    </span>
+  </div>
+
+  
+  <div class="card">
+    <div class="kv"><b>1. ID:</b> TC-ORDER-001</div>
+    <div class="kv"><b>2. Requirement ID:</b> REQ-ORDER-001</div>
+    <div class="kv"><b>3. Test Case Title:</b> Place order end-to-end (add item → checkout → confirm)</div>
+    <div class="kv"><b>8. Status:</b> <span class="PASS">PASS</span> <span class="muted small">(Elapsed: 5.00s)</span></div>
+
+    <div class="kv"><b>4. Preconditions:</b></div>
+    <ul>
+      <li>QuickBite is running at http://localhost:8082</li><li>Menu contains at least one item with an Order button</li><li>Checkout form is available after adding item to cart</li>
+    </ul>
+
+    <div class="kv"><b>5. Test Steps:</b></div>
+    <ol>
+      <li>Register and login</li><li>Wait menu cards appear</li><li>Click Order on first menu card</li><li>Verify cart has at least 1 item</li><li>Click Checkout</li><li>Fill customer details (name, address, phone)</li><li>Click Confirm Order</li><li>Verify confirmation alert contains &#39;Order placed&#39; and &#39;Order ID&#39;</li>
+    </ol>
+
+    <div class="kv"><b>6. Test Data:</b></div>
+    <ul>
+      <li>Customer Name: QuickBite Student</li><li>Address: Astana, Kazakhstan</li><li>Phone: 87001234567</li>
+    </ul>
+
+    <div class="kv"><b>7. Expected Result:</b></div>
+    <ul>
+      <li>Order confirmation alert is shown</li><li>Alert contains &#39;Order placed&#39; and &#39;Order ID&#39; (with actual ID value)</li>
+    </ul>
+
+    <div class="out">
+      <h4>Actual Output / Logs (from go test):</h4>
+      <div class="small">=== RUN   Test_QuickBite_PlaceFoodOrder_FullFlow<br/>    logger_test.go:14: START: Test_QuickBite_PlaceFoodOrder_FullFlow<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open auth page<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open Register tab<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Fill Register form<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Register button<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait registration alert<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open Login tab<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Fill Login form<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Login button<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait token in localStorage<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait Menu page title<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait menu cards visible<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click first Order button<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait cart item appears<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Checkout<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait checkout form enabled<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Fill customer details<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Confirm Order<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait confirmation alert<br/>    order_food_test.go:265: QuickBite: order placed successfully. Alert: &#34;Order placed! Order ID: 696d0a8e700b1cb930cf4ffa&#34;<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Order placed successfully<br/>    logger_test.go:22: END: Test_QuickBite_PlaceFoodOrder_FullFlow<br/>--- PASS: Test_QuickBite_PlaceFoodOrder_FullFlow (5.00s)<br/></div>
+    </div>
+
+    <div class="muted small">Go Test Name: Test_QuickBite_PlaceFoodOrder_FullFlow</div>
+  </div>
+  
+  <div class="card">
+    <div class="kv"><b>1. ID:</b> TC-AUTH-001</div>
+    <div class="kv"><b>2. Requirement ID:</b> REQ-AUTH-001</div>
+    <div class="kv"><b>3. Test Case Title:</b> Register → Login → Logout flow creates and clears session</div>
+    <div class="kv"><b>8. Status:</b> <span class="PASS">PASS</span> <span class="muted small">(Elapsed: 4.57s)</span></div>
+
+    <div class="kv"><b>4. Preconditions:</b></div>
+    <ul>
+      <li>QuickBite is running at http://localhost:8082</li><li>Auth page is доступна: /auth.html</li><li>Chrome &#43; chromedriver configured</li>
+    </ul>
+
+    <div class="kv"><b>5. Test Steps:</b></div>
+    <ol>
+      <li>Open /auth.html</li><li>Open Register tab</li><li>Fill registration form (Name, Email, Password, Confirm Password)</li><li>Click Register button</li><li>Verify registration feedback (alert/message)</li><li>Open Login tab</li><li>Enter Email &#43; Password</li><li>Click Login button</li><li>Verify token in localStorage OR logout button visible</li><li>Click Logout</li><li>Verify redirect to auth.html and localStorage cleared</li>
+    </ol>
+
+    <div class="kv"><b>6. Test Data:</b></div>
+    <ul>
+      <li>Name: QuickBite Tester</li><li>Email: auto-generated unique (example: quickbite_123456@mail.test)</li><li>Password: QuickBitePass_123!</li>
+    </ul>
+
+    <div class="kv"><b>7. Expected Result:</b></div>
+    <ul>
+      <li>Registration succeeds (success confirmation shown)</li><li>Login succeeds (token stored in localStorage, user is authenticated)</li><li>Logout succeeds (redirect to auth, token/userId removed)</li>
+    </ul>
+
+    <div class="out">
+      <h4>Actual Output / Logs (from go test):</h4>
+      <div class="small">=== RUN   Test_QuickBite_Register_Login_Logout_Flow<br/>    logger_test.go:14: START: Test_QuickBite_Register_Login_Logout_Flow<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Open auth page<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Open Register tab<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Fill Register form fields<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Click Register button<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait for registration alert (if any)<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Open Login tab<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Fill Login form fields<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Click Login button<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Handle login alert (optional)<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait token in localStorage<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait redirect to index or logout button visible<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Click Logout<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait redirect to auth.html<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Verify localStorage cleared<br/>    logger_test.go:22: END: Test_QuickBite_Register_Login_Logout_Flow<br/>--- PASS: Test_QuickBite_Register_Login_Logout_Flow (4.57s)<br/></div>
+    </div>
+
+    <div class="muted small">Go Test Name: Test_QuickBite_Register_Login_Logout_Flow</div>
+  </div>
+  
+  <div class="card">
+    <div class="kv"><b>1. ID:</b> TC-MENU-001</div>
+    <div class="kv"><b>2. Requirement ID:</b> REQ-MENU-002</div>
+    <div class="kv"><b>3. Test Case Title:</b> Filter menu items by category &#39;Drinks&#39; using dropdown</div>
+    <div class="kv"><b>8. Status:</b> <span class="PASS">PASS</span> <span class="muted small">(Elapsed: 6.59s)</span></div>
+
+    <div class="kv"><b>4. Preconditions:</b></div>
+    <ul>
+      <li>QuickBite is running at http://localhost:8082</li><li>Valid user can login</li><li>Menu page available after login: /index.html</li>
+    </ul>
+
+    <div class="kv"><b>5. Test Steps:</b></div>
+    <ol>
+      <li>Login to the system</li><li>Wait until categorySelect is visible</li><li>Select category value &#39;drinks&#39; in categorySelect</li><li>Verify selected value == drinks</li><li>Verify filtered cards appear in #recommendedGrid .menu-card</li>
+    </ol>
+
+    <div class="kv"><b>6. Test Data:</b></div>
+    <ul>
+      <li>Category value: drinks</li><li>Valid credentials (created during test run or pre-existing test user)</li>
+    </ul>
+
+    <div class="kv"><b>7. Expected Result:</b></div>
+    <ul>
+      <li>Dropdown value becomes &#39;drinks&#39;</li><li>At least 1 menu card is displayed after filtering</li>
+    </ul>
+
+    <div class="out">
+      <h4>Actual Output / Logs (from go test):</h4>
+      <div class="small">=== RUN   Test_QuickBite_Select_Class_Category_FindDrinks<br/>    logger_test.go:14: START: Test_QuickBite_Select_Class_Category_FindDrinks<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Login and open menu page<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Wait for categorySelect to be present<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Select category value = drinks (JS select-equivalent)<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Verify selected value is &#39;drinks&#39;<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Wait for filtered menu cards in #recommendedGrid<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Optional: check at least one card text contains drink-related keyword<br/>    select_class_test.go:73: QuickBite: first card text after drinks filter: &#34;Iced Latte\nSmooth espresso with cold milk over ice\n$3.99\nOrder&#34;<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Done<br/>    logger_test.go:22: END: Test_QuickBite_Select_Class_Category_FindDrinks<br/>--- PASS: Test_QuickBite_Select_Class_Category_FindDrinks (6.59s)<br/></div>
+    </div>
+
+    <div class="muted small">Go Test Name: Test_QuickBite_Select_Class_Category_FindDrinks</div>
+  </div>
+  
+
+</body>
+</html>

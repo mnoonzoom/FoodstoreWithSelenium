@@ -1,0 +1,48 @@
+[tests] 2026/01/18 21:32:48 === SUITE START ===
+[tests] 2026/01/18 21:32:48 START: Test_QuickBite_Register_Login_Logout_Flow
+[tests] 2026/01/18 21:32:49 STEP: Test_QuickBite_Register_Login_Logout_Flow | Open auth page
+[tests] 2026/01/18 21:32:49 STEP: Test_QuickBite_Register_Login_Logout_Flow | Open Register tab
+[tests] 2026/01/18 21:32:49 STEP: Test_QuickBite_Register_Login_Logout_Flow | Fill Register form fields
+[tests] 2026/01/18 21:32:50 STEP: Test_QuickBite_Register_Login_Logout_Flow | Click Register button
+[tests] 2026/01/18 21:32:50 STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait for registration alert (if any)
+[tests] 2026/01/18 21:32:50 STEP: Test_QuickBite_Register_Login_Logout_Flow | Open Login tab
+[tests] 2026/01/18 21:32:50 STEP: Test_QuickBite_Register_Login_Logout_Flow | Fill Login form fields
+[tests] 2026/01/18 21:32:50 STEP: Test_QuickBite_Register_Login_Logout_Flow | Click Login button
+[tests] 2026/01/18 21:32:50 STEP: Test_QuickBite_Register_Login_Logout_Flow | Handle login alert (optional)
+[tests] 2026/01/18 21:32:52 STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait token in localStorage
+[tests] 2026/01/18 21:32:52 STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait redirect to index or logout button visible
+[tests] 2026/01/18 21:32:52 STEP: Test_QuickBite_Register_Login_Logout_Flow | Click Logout
+[tests] 2026/01/18 21:32:52 STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait redirect to auth.html
+[tests] 2026/01/18 21:32:52 STEP: Test_QuickBite_Register_Login_Logout_Flow | Verify localStorage cleared
+[tests] 2026/01/18 21:32:52 END: Test_QuickBite_Register_Login_Logout_Flow
+[tests] 2026/01/18 21:32:52 START: Test_QuickBite_PlaceFoodOrder_FullFlow
+[tests] 2026/01/18 21:32:54 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open auth page
+[tests] 2026/01/18 21:32:54 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open Register tab
+[tests] 2026/01/18 21:32:54 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Fill Register form
+[tests] 2026/01/18 21:32:54 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Register button
+[tests] 2026/01/18 21:32:54 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait registration alert
+[tests] 2026/01/18 21:32:54 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open Login tab
+[tests] 2026/01/18 21:32:54 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Fill Login form
+[tests] 2026/01/18 21:32:55 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Login button
+[tests] 2026/01/18 21:32:57 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait token in localStorage
+[tests] 2026/01/18 21:32:57 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait Menu page title
+[tests] 2026/01/18 21:32:57 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait menu cards visible
+[tests] 2026/01/18 21:32:57 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click first Order button
+[tests] 2026/01/18 21:32:57 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait cart item appears
+[tests] 2026/01/18 21:32:57 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Checkout
+[tests] 2026/01/18 21:32:57 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait checkout form enabled
+[tests] 2026/01/18 21:32:57 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Fill customer details
+[tests] 2026/01/18 21:32:57 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Confirm Order
+[tests] 2026/01/18 21:32:57 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait confirmation alert
+[tests] 2026/01/18 21:32:57 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Order placed successfully
+[tests] 2026/01/18 21:32:57 END: Test_QuickBite_PlaceFoodOrder_FullFlow
+[tests] 2026/01/18 21:32:57 START: Test_QuickBite_Select_Class_Category_FindDrinks
+[tests] 2026/01/18 21:32:59 STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Login and open menu page
+[tests] 2026/01/18 21:33:04 STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Wait for categorySelect to be present
+[tests] 2026/01/18 21:33:04 STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Select category value = drinks (JS select-equivalent)
+[tests] 2026/01/18 21:33:04 STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Verify selected value is 'drinks'
+[tests] 2026/01/18 21:33:04 STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Wait for filtered menu cards in #recommendedGrid
+[tests] 2026/01/18 21:33:04 STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Optional: check at least one card text contains drink-related keyword
+[tests] 2026/01/18 21:33:04 STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Done
+[tests] 2026/01/18 21:33:04 END: Test_QuickBite_Select_Class_Category_FindDrinks
+[tests] 2026/01/18 21:33:04 === SUITE END ===
