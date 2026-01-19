@@ -29,8 +29,7 @@ if err != nil {
     t.Fatalf("QuickBite: categorySelect not found: %v", err)
 }
 
-	// Надежный способ выбрать option: через JS (эквивалент Select class)
-	// Expected: categorySelect.value == "drinks"
+
 	logStep(t, "Select category value = drinks (JS select-equivalent)")
 	_, err = wd.ExecuteScript(`
 		var s = document.getElementById('categorySelect');
@@ -57,7 +56,6 @@ if err != nil {
 		t.Fatalf("QuickBite: expected selected value 'drinks', got %v", val)
 	}
 
-	// Проверка результата фильтра: карточки появились, и (если есть текст) они связаны с напитками
 	logStep(t, "Wait for filtered menu cards in #recommendedGrid")
 	waitUntil(t, 12*time.Second, func() (bool, error) {
 		cards, err := wd.FindElements(selenium.ByCSSSelector, "#recommendedGrid .menu-card")
@@ -68,7 +66,7 @@ if err != nil {
 	cards, _ := wd.FindElements(selenium.ByCSSSelector, "#recommendedGrid .menu-card")
 	if len(cards) > 0 {
 		txt, _ := cards[0].Text()
-		// это мягкая проверка: не валим тест если слова нет, просто логируем
+
 		if !strings.Contains(strings.ToLower(txt), "drink") && !strings.Contains(strings.ToLower(txt), "cola") {
 			t.Logf("QuickBite: first card text after drinks filter: %q", txt)
 		}

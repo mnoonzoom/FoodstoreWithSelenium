@@ -99,7 +99,7 @@ func Test_QuickBite_Register_Login_Logout_Flow(t *testing.T) {
 		t.Fatalf("QuickBite: Register button click failed: %v", err)
 	}
 
-	logStep(t, "Wait for registration alert (if any)")
+	logStep(t, "Wait for registration alert ")
 	waitUntil(t, 8*time.Second, func() (bool, error) {
 		_, e := wd.AlertText()
 		return e == nil, nil

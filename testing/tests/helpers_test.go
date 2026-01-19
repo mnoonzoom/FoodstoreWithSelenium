@@ -72,7 +72,7 @@ func startChrome(t *testing.T) (selenium.WebDriver, func()) {
 
 func quickbiteUniqueEmail() string {
 	rand.Seed(time.Now().UnixNano())
-	return fmt.Sprintf("quickbite_%d@mail.test", rand.Intn(1_000_000_000))
+	return fmt.Sprintf("quickbite_%dmail.test", rand.Intn(1_000_000_000))
 }
 
 func waitUntil(t *testing.T, timeout time.Duration, cond func() (bool, error)) {

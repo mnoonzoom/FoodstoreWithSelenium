@@ -30,7 +30,6 @@ func Test_QuickBite_PlaceFoodOrder_FullFlow(t *testing.T) {
 		t.Fatalf("QuickBite: unexpected auth page title: %q", title1)
 	}
 
-	// ---------- REGISTER ----------
 	logStep(t, "Open Register tab")
 	regTab, err := wd.FindElement(selenium.ByCSSSelector, "[data-tab='register']")
 	if err != nil {
@@ -78,11 +77,10 @@ func Test_QuickBite_PlaceFoodOrder_FullFlow(t *testing.T) {
 	_ = confEl.Clear()
 	_ = confEl.SendKeys(password)
 
-	// CLICK REGISTER BUTTON (instead of Submit)
 	logStep(t, "Click Register button")
 	regBtn, err := wd.FindElement(selenium.ByCSSSelector, "#registerForm button[type='submit']")
 	if err != nil {
-		// fallback if markup differs
+	
 		regBtn, err = wd.FindElement(selenium.ByCSSSelector, "#registerForm button")
 	}
 	if err != nil {
@@ -102,7 +100,6 @@ func Test_QuickBite_PlaceFoodOrder_FullFlow(t *testing.T) {
 		t.Logf("QuickBite: registration alert text: %q", regAlert)
 	}
 
-	// ---------- LOGIN ----------
 	logStep(t, "Open Login tab")
 	loginTab, err := wd.FindElement(selenium.ByCSSSelector, "[data-tab='login']")
 	if err != nil {
@@ -132,7 +129,6 @@ func Test_QuickBite_PlaceFoodOrder_FullFlow(t *testing.T) {
 	_ = loginPass.Clear()
 	_ = loginPass.SendKeys(password)
 
-	// CLICK LOGIN BUTTON (instead of Submit)
 	logStep(t, "Click Login button")
 	loginBtn, err := wd.FindElement(selenium.ByCSSSelector, "#loginForm button[type='submit']")
 	if err != nil {
@@ -144,7 +140,6 @@ func Test_QuickBite_PlaceFoodOrder_FullFlow(t *testing.T) {
 	}
 	_ = loginBtn.Click()
 
-	// Optional login alert
 	func() {
 		deadline := time.Now().Add(2 * time.Second)
 		for time.Now().Before(deadline) {
@@ -173,7 +168,6 @@ func Test_QuickBite_PlaceFoodOrder_FullFlow(t *testing.T) {
 		return e == nil && strings.Contains(tt, "QuickBite Menu"), nil
 	})
 
-	// ---------- ORDER ----------
 	logStep(t, "Wait menu cards visible")
 	waitUntil(t, 25*time.Second, func() (bool, error) {
 		cards, e := wd.FindElements(selenium.ByCSSSelector, "#recommendedGrid .menu-card")

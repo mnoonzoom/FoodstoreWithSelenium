@@ -25,7 +25,7 @@
 
   <div class="sum">
     <b>Execution summary:</b>
-    Pass: 3 | Fail: 0 | Skip: 0 <br/>
+    Pass: 0 | Fail: 3 | Skip: 0 <br/>
     <span class="muted small">
       Logs: tests/target/logs/test-run.log • Screenshots: tests/target/screenshots/
     </span>
@@ -36,7 +36,7 @@
     <div class="kv"><b>1. ID:</b> TC-ORDER-001</div>
     <div class="kv"><b>2. Requirement ID:</b> REQ-ORDER-001</div>
     <div class="kv"><b>3. Test Case Title:</b> Place order end-to-end (add item → checkout → confirm)</div>
-    <div class="kv"><b>8. Status:</b> <span class="PASS">PASS</span> <span class="muted small">(Elapsed: 5.00s)</span></div>
+    <div class="kv"><b>8. Status:</b> <span class="FAIL">FAIL</span> <span class="muted small">(Elapsed: 12.15s)</span></div>
 
     <div class="kv"><b>4. Preconditions:</b></div>
     <ul>
@@ -60,7 +60,7 @@
 
     <div class="out">
       <h4>Actual Output / Logs (from go test):</h4>
-      <div class="small">=== RUN   Test_QuickBite_PlaceFoodOrder_FullFlow<br/>    logger_test.go:14: START: Test_QuickBite_PlaceFoodOrder_FullFlow<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open auth page<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open Register tab<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Fill Register form<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Register button<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait registration alert<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open Login tab<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Fill Login form<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Login button<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait token in localStorage<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait Menu page title<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait menu cards visible<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click first Order button<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait cart item appears<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Checkout<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait checkout form enabled<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Fill customer details<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Confirm Order<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait confirmation alert<br/>    order_food_test.go:265: QuickBite: order placed successfully. Alert: &#34;Order placed! Order ID: 696d0a8e700b1cb930cf4ffa&#34;<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Order placed successfully<br/>    logger_test.go:22: END: Test_QuickBite_PlaceFoodOrder_FullFlow<br/>--- PASS: Test_QuickBite_PlaceFoodOrder_FullFlow (5.00s)<br/></div>
+      <div class="small">=== RUN   Test_QuickBite_PlaceFoodOrder_FullFlow<br/>    logger_test.go:14: START: Test_QuickBite_PlaceFoodOrder_FullFlow<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open auth page<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open Register tab<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Fill Register form<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Register button<br/>    logger_test.go:30: STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait registration alert<br/>    order_food_test.go:93: QuickBite: explicit wait condition not met within 10s<br/>    helpers_test.go:56: Screenshot saved: target/screenshots/Test_QuickBite_PlaceFoodOrder_FullFlow_20260119_173238.png<br/>    logger_test.go:22: END: Test_QuickBite_PlaceFoodOrder_FullFlow<br/>--- FAIL: Test_QuickBite_PlaceFoodOrder_FullFlow (12.15s)<br/></div>
     </div>
 
     <div class="muted small">Go Test Name: Test_QuickBite_PlaceFoodOrder_FullFlow</div>
@@ -70,7 +70,7 @@
     <div class="kv"><b>1. ID:</b> TC-AUTH-001</div>
     <div class="kv"><b>2. Requirement ID:</b> REQ-AUTH-001</div>
     <div class="kv"><b>3. Test Case Title:</b> Register → Login → Logout flow creates and clears session</div>
-    <div class="kv"><b>8. Status:</b> <span class="PASS">PASS</span> <span class="muted small">(Elapsed: 4.57s)</span></div>
+    <div class="kv"><b>8. Status:</b> <span class="FAIL">FAIL</span> <span class="muted small">(Elapsed: 10.12s)</span></div>
 
     <div class="kv"><b>4. Preconditions:</b></div>
     <ul>
@@ -94,7 +94,7 @@
 
     <div class="out">
       <h4>Actual Output / Logs (from go test):</h4>
-      <div class="small">=== RUN   Test_QuickBite_Register_Login_Logout_Flow<br/>    logger_test.go:14: START: Test_QuickBite_Register_Login_Logout_Flow<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Open auth page<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Open Register tab<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Fill Register form fields<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Click Register button<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait for registration alert (if any)<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Open Login tab<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Fill Login form fields<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Click Login button<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Handle login alert (optional)<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait token in localStorage<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait redirect to index or logout button visible<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Click Logout<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait redirect to auth.html<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Verify localStorage cleared<br/>    logger_test.go:22: END: Test_QuickBite_Register_Login_Logout_Flow<br/>--- PASS: Test_QuickBite_Register_Login_Logout_Flow (4.57s)<br/></div>
+      <div class="small">=== RUN   Test_QuickBite_Register_Login_Logout_Flow<br/>    logger_test.go:14: START: Test_QuickBite_Register_Login_Logout_Flow<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Open auth page<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Open Register tab<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Fill Register form fields<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Click Register button<br/>    logger_test.go:30: STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait for registration alert <br/>    auth_flow_test.go:103: QuickBite: explicit wait condition not met within 8s<br/>    helpers_test.go:56: Screenshot saved: target/screenshots/Test_QuickBite_Register_Login_Logout_Flow_20260119_173225.png<br/>    logger_test.go:22: END: Test_QuickBite_Register_Login_Logout_Flow<br/>--- FAIL: Test_QuickBite_Register_Login_Logout_Flow (10.12s)<br/></div>
     </div>
 
     <div class="muted small">Go Test Name: Test_QuickBite_Register_Login_Logout_Flow</div>
@@ -104,7 +104,7 @@
     <div class="kv"><b>1. ID:</b> TC-MENU-001</div>
     <div class="kv"><b>2. Requirement ID:</b> REQ-MENU-002</div>
     <div class="kv"><b>3. Test Case Title:</b> Filter menu items by category &#39;Drinks&#39; using dropdown</div>
-    <div class="kv"><b>8. Status:</b> <span class="PASS">PASS</span> <span class="muted small">(Elapsed: 6.59s)</span></div>
+    <div class="kv"><b>8. Status:</b> <span class="FAIL">FAIL</span> <span class="muted small">(Elapsed: 12.12s)</span></div>
 
     <div class="kv"><b>4. Preconditions:</b></div>
     <ul>
@@ -128,7 +128,7 @@
 
     <div class="out">
       <h4>Actual Output / Logs (from go test):</h4>
-      <div class="small">=== RUN   Test_QuickBite_Select_Class_Category_FindDrinks<br/>    logger_test.go:14: START: Test_QuickBite_Select_Class_Category_FindDrinks<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Login and open menu page<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Wait for categorySelect to be present<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Select category value = drinks (JS select-equivalent)<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Verify selected value is &#39;drinks&#39;<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Wait for filtered menu cards in #recommendedGrid<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Optional: check at least one card text contains drink-related keyword<br/>    select_class_test.go:73: QuickBite: first card text after drinks filter: &#34;Iced Latte\nSmooth espresso with cold milk over ice\n$3.99\nOrder&#34;<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Done<br/>    logger_test.go:22: END: Test_QuickBite_Select_Class_Category_FindDrinks<br/>--- PASS: Test_QuickBite_Select_Class_Category_FindDrinks (6.59s)<br/></div>
+      <div class="small">=== RUN   Test_QuickBite_Select_Class_Category_FindDrinks<br/>    logger_test.go:14: START: Test_QuickBite_Select_Class_Category_FindDrinks<br/>    logger_test.go:30: STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Login and open menu page<br/>    select_class_test.go:19: QuickBite: explicit wait condition not met within 10s<br/>    helpers_test.go:56: Screenshot saved: target/screenshots/Test_QuickBite_Select_Class_Category_FindDrinks_20260119_173250.png<br/>    logger_test.go:22: END: Test_QuickBite_Select_Class_Category_FindDrinks<br/>--- FAIL: Test_QuickBite_Select_Class_Category_FindDrinks (12.12s)<br/></div>
     </div>
 
     <div class="muted small">Go Test Name: Test_QuickBite_Select_Class_Category_FindDrinks</div>
