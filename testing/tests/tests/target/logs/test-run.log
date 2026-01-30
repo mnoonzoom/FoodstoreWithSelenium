@@ -1,22 +1,2 @@
-[tests] 2026/01/19 17:32:15 === SUITE START ===
-[tests] 2026/01/19 17:32:15 START: Test_QuickBite_Register_Login_Logout_Flow
-[tests] 2026/01/19 17:32:17 STEP: Test_QuickBite_Register_Login_Logout_Flow | Open auth page
-[tests] 2026/01/19 17:32:17 STEP: Test_QuickBite_Register_Login_Logout_Flow | Open Register tab
-[tests] 2026/01/19 17:32:17 STEP: Test_QuickBite_Register_Login_Logout_Flow | Fill Register form fields
-[tests] 2026/01/19 17:32:17 STEP: Test_QuickBite_Register_Login_Logout_Flow | Click Register button
-[tests] 2026/01/19 17:32:17 STEP: Test_QuickBite_Register_Login_Logout_Flow | Wait for registration alert 
-[tests] 2026/01/19 17:32:25 SCREENSHOT SAVED: target/screenshots/Test_QuickBite_Register_Login_Logout_Flow_20260119_173225.png
-[tests] 2026/01/19 17:32:25 END: Test_QuickBite_Register_Login_Logout_Flow
-[tests] 2026/01/19 17:32:25 START: Test_QuickBite_PlaceFoodOrder_FullFlow
-[tests] 2026/01/19 17:32:27 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open auth page
-[tests] 2026/01/19 17:32:27 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Open Register tab
-[tests] 2026/01/19 17:32:27 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Fill Register form
-[tests] 2026/01/19 17:32:27 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Click Register button
-[tests] 2026/01/19 17:32:27 STEP: Test_QuickBite_PlaceFoodOrder_FullFlow | Wait registration alert
-[tests] 2026/01/19 17:32:38 SCREENSHOT SAVED: target/screenshots/Test_QuickBite_PlaceFoodOrder_FullFlow_20260119_173238.png
-[tests] 2026/01/19 17:32:38 END: Test_QuickBite_PlaceFoodOrder_FullFlow
-[tests] 2026/01/19 17:32:38 START: Test_QuickBite_Select_Class_Category_FindDrinks
-[tests] 2026/01/19 17:32:39 STEP: Test_QuickBite_Select_Class_Category_FindDrinks | Login and open menu page
-[tests] 2026/01/19 17:32:50 SCREENSHOT SAVED: target/screenshots/Test_QuickBite_Select_Class_Category_FindDrinks_20260119_173250.png
-[tests] 2026/01/19 17:32:50 END: Test_QuickBite_Select_Class_Category_FindDrinks
-[tests] 2026/01/19 17:32:50 === SUITE END ===
+[tests] 2026/01/30 18:27:40 === SUITE START ===
+[tests] 2026/01/30 18:28:15 === SUITE END ===
